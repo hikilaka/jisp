@@ -10,6 +10,6 @@
     (print-line "5 + 2 = 7")
     (print-line "5 + 2 != 7"))
 
-(if (nil? twelve)
-    ()
-    ())
+(if (nil? nil)
+    (print-line "nil = nil, hurrah!")
+    (print-line "nil != nil, chaos ensues"))
