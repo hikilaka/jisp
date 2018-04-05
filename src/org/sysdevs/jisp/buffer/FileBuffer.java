@@ -1,12 +1,20 @@
-package org.sysdevs.lisp.buffer;
+package org.sysdevs.jisp.buffer;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Optional;
 
+/**
+ * An implementation of an {@link InputBuffer} that accepts a {@link Path} for
+ * its source of input.
+ * 
+ * @author Zack Penn
+ */
 public final class FileBuffer implements InputBuffer {
+
 	private final String buffer;
+
 	private int position = 0;
 
 	public FileBuffer(Path file) throws IOException {
@@ -41,7 +49,7 @@ public final class FileBuffer implements InputBuffer {
 		advance(length);
 		return peekString(length, -length);
 	}
-	
+
 	@Override
 	public Optional<String> take(int length, int offset) {
 		advance(length);
@@ -52,4 +60,5 @@ public final class FileBuffer implements InputBuffer {
 	public void advance(int amount) {
 		position += amount;
 	}
+
 }

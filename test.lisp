@@ -1,15 +1,19 @@
-; define a couple of test variables
-(define five 5)
-(define twelve 12)
+;; 'simple' program that reads an integer (or even a string!)
+;; from stdin and prints its value doubled
 
-; prints 12 + 5 + 3
-(print-line "12 + 5 + 3 = " (+ twelve five 3))
+; doubles the input value, i
+(define double
+  (lambda [i]
+    (* i 2)))
 
-; test the expression "5 + 7 = 7" 
-(if (= (+ five 2) 7)
-    (print-line "5 + 2 = 7")
-    (print-line "5 + 2 != 7"))
-
-(if (nil? nil)
-    (print-line "nil = nil, hurrah!")
-    (print-line "nil != nil, chaos ensues"))
+; note this is deliberately contrived to demonstrate
+; the (awesome) let-binding functionality
+(define main
+  (lambda []
+    (print "enter a value to double [string or integer]: ")
+    (let [n (read-string)
+          n-doubled (let [parsed (parse-integer n)]
+                      (if (nil? parsed)
+                        (double n)
+                        (double parsed)))]
+      (print-line n " * 2 = " n-doubled))))

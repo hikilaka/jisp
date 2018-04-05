@@ -1,10 +1,12 @@
-package org.sysdevs.lisp.buffer;
+package org.sysdevs.jisp.buffer;
 
 import java.util.Optional;
 
 /**
+ * The InputBuffer interface provides functionality needed by the
+ * {@link Tokenizer}.
  * 
- * @author zack
+ * @author Zack Penn
  */
 public interface InputBuffer {
 	/**
@@ -45,10 +47,11 @@ public interface InputBuffer {
 	 * @return
 	 */
 	public Optional<String> take(int length);
-	
+
 	/**
 	 * 
 	 * @param length
+	 * @param offset
 	 * @return
 	 */
 	public Optional<String> take(int length, int offset);
